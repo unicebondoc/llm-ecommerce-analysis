@@ -1,104 +1,141 @@
-# LLMs for E-Commerce Content Generation
+# LLMs for E-Commerce Content Generation — Data Analysis
 
-**WSU Masters Research Project** | School of Computer Science, Western Sydney University
-
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
-[![Research](https://img.shields.io/badge/Grade-HD%2088%2F100-brightgreen)](.)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
+**Western Sydney University | Master of ICT | INFO7016 Postgraduate Project A | 2024**
+**Result: High Distinction (88/100)**
 
 ---
 
 ## Overview
 
-This repository contains the data analysis and research artefacts for a Masters-level study examining the effectiveness of **Large Language Model (LLM)-generated content versus human-authored content** in e-commerce product listings, conducted on the Shopify platform.
+This repository contains the Python data analysis for my Masters research project investigating the impact of Large Language Models (LLMs) on digital content creation in e-commerce. The study conducted a sequential A/B test on a live Shopify platform, comparing AI-generated content (ChatGPT/GPT-4) against human-generated content across a two-week period.
 
-The study employed a controlled A/B testing methodology, measuring how AI- and human-generated content influences key consumer engagement and purchase behaviour metrics.
+**Research Question:** Does AI-generated content outperform human-generated content on key e-commerce engagement and conversion metrics?
 
 ---
 
-## Research Summary
+## Study Design
 
-| Attribute | Detail |
+| Parameter | Detail |
 |---|---|
-| **Study Type** | Controlled A/B Experiment |
-| **Platform** | Shopify |
-| **Participants** | 30 |
-| **Content Conditions** | AI-generated (LLM) vs. Human-authored |
-| **Grade Achieved** | High Distinction — 88 / 100 |
+| Platform | Shopify E-Commerce Store |
+| Method | Sequential A/B Testing |
+| Week 1 | AI-generated content (ChatGPT/GPT-4) |
+| Week 2 | Human-generated content |
+| Participants | n=30 (Week 1), n=22 (Week 2) |
+| Data Sources | Google Analytics (quantitative) + Google Forms surveys (qualitative) |
+| Chatbot | GPT-4 powered chatbot integrated for real-time feedback |
 
 ---
 
 ## Key Findings
 
-| Metric | AI-Generated | Human-Authored | Outcome |
+### Quantitative — Google Analytics
+
+| Metric | AI Content | Human Content | Difference |
 |---|---|---|---|
-| **Page Views** | +165% higher | Baseline | AI content drove significantly more traffic |
-| **Purchase Intent** | Baseline | 2× higher | Human content drove stronger purchase intent |
+| Page Views | 209 | 79 | AI +165% |
+| Active Users | 48 | 32 | AI +50% |
+| Avg Time on Page | 1m 11s | 39s | AI +82% |
+| Bounce Rate | 40% | 43% | AI lower |
+| CTR | Higher | Lower | AI better |
 
-### Interpretation
+### Qualitative — Survey Results (n=30 / n=22)
 
-The findings reveal a nuanced trade-off between AI and human content in e-commerce contexts:
+| Category | AI Content | Human Content |
+|---|---|---|
+| Trustworthiness (rated 5/5) | 43.3% | 40.0% |
+| Satisfaction (rated 5/5) | 43.3% | 43.3% |
+| Definite Purchase Intent | 16.7% | 33.3% |
+| Correctly identified content type | 36.7% | 63.3% |
 
-- **AI-generated content** excels at discoverability — likely due to SEO-optimised language, keyword density, and structured formatting — producing substantially more page views.
-- **Human-authored content** builds greater purchase intent, suggesting that authentic, emotionally resonant writing is more persuasive at the conversion stage of the customer journey.
+### Statistical Summary
 
-These results imply that a **hybrid content strategy** — using LLMs for top-of-funnel discoverability and human writers for conversion-focused copy — may yield optimal outcomes for e-commerce merchants.
+```
+AI Content    — Engagement Mean: 3.67  Median: 4.0  Std: 1.01  n=30
+Human Content — Engagement Mean: 3.73  Median: 4.0  Std: 1.09  n=22
+Cohen's d: -0.058 (small effect — comparable satisfaction between content types)
+```
 
 ---
 
-## Repository Structure
+## Conclusion
+
+- **AI content excels at initial engagement** — 165% more page views, 82% longer time on page
+- **Human content wins on trust and conversion** — 2x higher definite purchase intent
+- **Optimal strategy:** Hybrid approach combining AI efficiency with human authenticity
+- 63.3% of users correctly identified human-written content, suggesting distinct stylistic differences
+
+---
+
+## Hypothesis Testing Summary
+
+| Hypothesis | Result |
+|---|---|
+| H1: AI drives higher engagement metrics | ✅ Supported |
+| H2: Distinct interaction patterns for each content type | ✅ Supported |
+| H3: AI achieves higher CTR | ⚠️ Partially Supported (higher CTR, zero conversions) |
+| H4: Human content perceived as more trustworthy | ✅ Supported |
+| H5: AI content increases bounce rate | ❌ Not Supported (AI bounce lower) |
+| H7: Favourable feedback on AI content | ✅ Supported |
+| H8: Human content drives more conversions | ✅ Supported |
+| H9: Users can distinguish AI vs human content | ✅ Supported |
+
+---
+
+## Repository Contents
 
 ```
 llm-ecommerce-analysis/
-├── README.md              # Project overview and findings
-├── .gitignore             # Python gitignore
-└── analysis.py            # Data analysis script
+├── llm_ecommerce_analysis.py      # Full Python analysis (pandas, numpy, matplotlib)
+├── llm_analysis_visualisation.png # 6-panel data visualisation
+└── README.md                      # This file
 ```
 
 ---
 
-## Methods
+## Tech Stack
 
-1. **Participant Recruitment** — 30 participants recruited for the study.
-2. **A/B Content Creation** — Product listings written by both a human copywriter and an LLM (e.g., GPT-4 / Claude), matched for product category and length.
-3. **Platform Deployment** — Listings deployed on Shopify with randomised variant assignment.
-4. **Metric Collection** — Page view analytics and purchase intent measured via post-exposure survey and platform analytics.
-5. **Statistical Analysis** — Python-based analysis (see `analysis.py`) used to compare conditions.
+```
+Python 3.x
+├── pandas      — Data manipulation and A/B test metric analysis
+├── numpy       — Statistical calculations (mean, std, Cohen's d)
+└── matplotlib  — 6-panel data visualisation
+```
 
 ---
 
-## Getting Started
-
-### Prerequisites
+## How to Run
 
 ```bash
-python >= 3.10
-pip install -r requirements.txt  # if applicable
-```
+# Clone the repo
+git clone https://github.com/unicebondoc/llm-ecommerce-analysis.git
+cd llm-ecommerce-analysis
 
-### Running the Analysis
+# Install dependencies
+pip install pandas numpy matplotlib
 
-```bash
-python analysis.py
-```
-
----
-
-## Citation
-
-If you reference this work, please cite:
-
-```
-Bondoc, U. (2025). LLMs for E-Commerce Content Generation: An A/B Testing Study
-of AI vs. Human Content on Shopify. Masters Research Project, Western Sydney University.
+# Run the analysis
+python llm_ecommerce_analysis.py
 ```
 
 ---
 
-## License
+## Research Context
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project was completed as part of the Master of ICT (Web and Mobile Computing) at Western Sydney University, supervised by Dr. Jason Lee (School of Computer, Data and Mathematical Sciences).
+
+The full study included:
+
+- Literature review covering AI-generated content in e-commerce (EcomGPT, LLaMA-E, ChatGPT)
+- Ethical framework addressing transparency, bias, and data privacy
+- Mixed-methods analysis combining Google Analytics quantitative data with thematic analysis of qualitative survey responses
+- Practical recommendations for SME businesses integrating AI into content strategies
 
 ---
 
-*Western Sydney University · Masters of Computer Science · 2025*
+## Author
+
+**Unice Bondoc**
+AI Engineer | Master of ICT Graduate | Western Sydney University
+
+[unicebondoc.com](https://unicebondoc.com) · [LinkedIn](https://linkedin.com/in/unicebondoc) · [GitHub](https://github.com/unicebondoc)
